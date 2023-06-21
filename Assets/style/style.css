@@ -1,0 +1,15 @@
+.left {
+    border: 1px solid black
+}
+
+.right {
+    border: 1px solid black;
+}
+.egcity {
+    width: 100%;
+    background-color: grey;
+}
+.current-city {
+    background-color: navy;
+    color: white;
+}
