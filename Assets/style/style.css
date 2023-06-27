@@ -9,7 +9,13 @@
     width: 100%;
     background-color: grey;
 }
-.current-city {
+#weather-display> div {
     background-color: navy;
     color: white;
 }
+#current-city {
+    width: 100%;
+}
+/* .current-city ~ div {
+    width: 20%;
+} */

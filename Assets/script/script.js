@@ -3,7 +3,8 @@ var dataObject;
 var limit = 5;
 var h1 = document.createElement("h1");
 var h2 = document.createElement("h2");
-
+//Variables for html elemenets
+var weatherDisplay = document.getElementById("weather-display")
 var cityHeader = document.getElementById("cityDisplay");
 var tempEl = document.getElementById("temperature");
 var windEl = document.getElementById("wind");
@@ -24,14 +25,11 @@ function getWeather(lat, lon) {
             console.log(cityName)
             console.log(data)
             console.log(data.list[0])
-            for (let i = 0; i < data.list.length; i++) {
-                console.log(`${data.list[i].dt_txt}`);
-                
-            }
+            //logs date for 24 hour interval
+           
             //Populates main card with today's weather 
-            
             weatherToday(data)
-
+            weatherForecast(data)
         })
 }
 //Takes the search input and uses it to make an API call and access city's latitude and longitude
@@ -46,12 +44,14 @@ function getLocation(searchTerm) {
             cityName = data[0].name;
         })
 }
-
+//Populates main card with data
 function weatherToday(data) {
+    
     var weatherIcon = data.list[0].weather[0].icon
     var temperature = data.list[0].main.temp;
     var windSpeed = data.list[0].wind.speed;
     var humidity = data.list[0].main.humidity;
+    //Converts time from to utc to D/MM/YYYY format
     var d = new Date(data.list[0].dt *1000)
     var todaysDate = d.toLocaleDateString();
     
@@ -61,5 +61,26 @@ function weatherToday(data) {
     windEl.textContent = `Wind Speed: ${windSpeed} MPH`
     humidityEl.textContent = `Humidity: ${humidity}%`
 }
-getLocation('San Francisco')
+
+function weatherForecast(data) {
+    for (let i = 8; i < data.list.length; i+=8) {
+        var d = new Date(data.list[i].dt * 1000)
+        var fillDate = d.toLocaleDateString();
+
+        var weatherDisplay = $('#weather-display');
+        weatherDisplay.addClass('row')
+        var followingDays = $('<div class="col-2" ></div>')
+        var dateHeader = $('<h3>');
+        var weatherIcon = $(`<img>`)
+        weatherIcon.attr("src", `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`)
+        var weatherStats = $(`<ul><li>Temp: ${data.list[i].main.temp}</li><li>Wind: ${data.list[i].wind.speed}</li><li>Humidity: ${data.list[i].main.humidity}</li></ul>`)
+        dateHeader.text(`${fillDate}`) 
+  
+        weatherDisplay.append(followingDays)
+        followingDays.append(dateHeader, weatherIcon, weatherStats)
+        // followingDays.append(weatherStats)
+
+    }
+}
+getLocation('Washington DC')
 // button.addEventListener("click", getLocation)
