@@ -11,15 +11,17 @@
 </head>
 
 <body>
-    <header>
+    <header class="">
         <h1>Weather Dashboard</h1>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-4 left">
+            <div class="col-2 left">
                 <h2>Search for a City:</h2>
-                <input type="text" placeholder="San Diego">
-                <button class="btn">Search</button>
+                <form id="city-form">
+                    <input id="city-input" type="text" placeholder="San Diego">
+                    <button id="city-submit" type="submit" class="btn">Search</button>
+                </form>
                 <hr>
                 <div>
                     <button class="btn egcity py-2 my-3">Atlanta</button>
@@ -33,13 +35,64 @@
 
                 </div>
             </div>
-            <div id="weather-display" class="col-8 right">
-                <div class="current-city">
+            <div id="weather-display" class="col-10 right row ">
+                <div class="current-city col-12">
                     <h2 id="cityDisplay"></h2>
-                    <img id="weather-icon" src="" alt="">
+                    <!-- <img id="weather-icon" src="" alt=""> -->
                     <p id="temperature"></p>
                     <p id="wind"></p>
                     <p id="humidity"></p>
+                </div>
+                <div class="">
+                    <h3>5-Day Forecast:</h3>
+                    <div class="row">
+                        <div class="col-2 m-2 forecast">
+                            <div>
+                                <h6>6/29/2023</h6>
+                                <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="">
+                                <p>Temperature</p>
+                                <p>Wind Speed</p>
+                                <p>Humidity</p>
+                            </div>
+                        </div>
+                        <div class="col-2 m-2 forecast">
+                            <div>
+                                <h6>6/29/2023</h6>
+                                <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="">
+                                <p>Temperature</p>
+                                <p>Wind Speed</p>
+                                <p>Humidity</p>
+                            </div>
+                        </div>
+                        <div class="col-2 m-2 forecast">
+                            <div>
+                                <h6>6/29/2023</h6>
+                                <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="">
+                                <p>Temperature</p>
+                                <p>Wind Speed</p>
+                                <p>Humidity</p>
+                            </div>
+                        </div>
+                        <div class="col-2 m-2 forecast">
+                            <div>
+                                <h6>6/29/2023</h6>
+                                <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="">
+                                <p>Temperature</p>
+                                <p>Wind Speed</p>
+                                <p>Humidity</p>
+                            </div>
+                        </div>
+                        <div class="col-2 m-2 forecast">
+                            <div>
+                                <h6>6/29/2023</h6>
+                                <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="">
+                                <p>Temperature</p>
+                                <p>Wind Speed</p>
+                                <p>Humidity</p>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

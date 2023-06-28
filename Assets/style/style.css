@@ -1,21 +1,31 @@
 .left {
-    border: 1px solid black
+    /* border: 1px solid black */
 }
 
 .right {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+}
+header {
+    background-image: linear-gradient(to right, rgb(130, 151, 215), rgb(17, 70, 229));
+    color: white;
+    text-align: center;
 }
 .egcity {
     width: 100%;
     background-color: grey;
 }
-#weather-display> div {
-    background-color: navy;
+#weather-display {
+    height: fit-content;
+}
+.forecast {
+    background-color: rgb(6, 6, 90);
     color: white;
 }
-#current-city {
+.current-city {
     width: 100%;
+    border: 1px solid black;
 }
-/* .current-city ~ div {
-    width: 20%;
-} */
+img {
+    width: 2rem;
+    height: 2rem;
+}

@@ -29,7 +29,7 @@ function getWeather(lat, lon) {
            
             //Populates main card with today's weather 
             weatherToday(data)
-            weatherForecast(data)
+            // weatherForecast(data)
         })
 }
 //Takes the search input and uses it to make an API call and access city's latitude and longitude
@@ -55,8 +55,8 @@ function weatherToday(data) {
     var d = new Date(data.list[0].dt *1000)
     var todaysDate = d.toLocaleDateString();
     
-    weatherEl.src = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
-    cityHeader.textContent = `${cityName} ${todaysDate}`
+    // weatherEl.src = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+    cityHeader.innerHTML = `${cityName} ${todaysDate} <img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png">`
     tempEl.textContent = `Temperature: ${temperature}F`
     windEl.textContent = `Wind Speed: ${windSpeed} MPH`
     humidityEl.textContent = `Humidity: ${humidity}%`
@@ -82,5 +82,18 @@ function weatherForecast(data) {
 
     }
 }
-getLocation('Washington DC')
+
+var cityForm = document.getElementById("city-form")
+var cityInput = document.getElementById("city-input")
+
+function formSubmit(e) {
+    e.preventDefault()
+    if (cityInput.value === "") {
+        alert("please enter a city name")
+    } else {
+        getLocation(cityInput.value)
+    }
+}
+cityForm.addEventListener('submit', formSubmit)
+// getLocation('Washington DC')
 // button.addEventListener("click", getLocation)
